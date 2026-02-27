@@ -1,0 +1,12 @@
+.Product{
+    border: 2px rgb(135, 4, 135) solid;
+    border-radius: 25px;
+    margin: 10px;
+    width: 250px;
+    height: 130px;
+}
+h1{
+    font-size: 35px;
+    
+}
+

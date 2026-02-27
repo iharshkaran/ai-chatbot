@@ -1,12 +1,10 @@
 import './App.css'
-import Title from "./Title.jsx"
+import ProductTab from './ProductTab.jsx';
 
 function App() {
   return(
     <>
-      <Title />
-      <Title />
-      <p> 2 x 2 = {2*2}</p>
+      <ProductTab />
     </>
   );
 }
