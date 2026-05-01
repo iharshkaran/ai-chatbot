@@ -1,0 +1,9 @@
+# Ignore binaries (files with no extension)
+*
+!*/
+!*.*
+
+# System & IDE files
+.DS_Store
+.vscode/
+*.exe
