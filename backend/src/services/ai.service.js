@@ -5,11 +5,11 @@ import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({});
 
-async function generateText(prompt) {
+async function generateText(chatHistory) {
 
         const response = await ai.models.generateContent({
             model: "gemini-3.1-flash-lite",
-            contents: prompt,
+            contents: chatHistory,
         });
 
         return response.text;
