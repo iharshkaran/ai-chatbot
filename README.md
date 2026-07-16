@@ -1,4 +1,4 @@
-# AI Chatbot 🤖
+# AI Chatbot
 
 A real-time AI chatbot built with the MERN stack using Google Gemini API and Socket.IO. It enables instant two-way communication with AI through WebSockets, providing a fast and interactive chat experience.
 
@@ -104,18 +104,6 @@ Socket.IO
    │
 Frontend
 ```
-
----
-
-## 🔮 Future Improvements
-
-- 📝 Chat History
-- 💾 MongoDB Integration
-- 📄 PDF Chat (RAG)
-- 🖼️ Image Upload
-- 🎙️ Voice Chat
-- 🌐 Multiple Chat Sessions
-- ⚡ Streaming Responses
 
 ---
 
