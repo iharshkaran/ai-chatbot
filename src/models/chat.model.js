@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const chatSchema = new mongoose.Schema({
     user:{
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'user',
+        ref : 'User',
         required : true
     },
     title:{
@@ -18,6 +18,6 @@ const chatSchema = new mongoose.Schema({
     timestamps : true
 })
 
-const Chat =  mongoose.model("Chat", chatSchema)
+const Chat =  mongoose.model("Chat", chatSchema);
 
 export default Chat;

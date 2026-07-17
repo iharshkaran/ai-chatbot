@@ -12,7 +12,7 @@ async function authUser(req, res, next) {
     try {
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET); // if valid then decoded = userId
-        const user = await User.findOne(decoded._id);
+        const user = await User.findById(decoded.userId);
 
         req.user = user;
 

@@ -23,13 +23,17 @@ async function registerController(req, res) {
         password: hashPassword
     })
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
     res.cookie("token", token);
 
     res.status(201).json({
-        message: "User registered Succesfully",
-        user
-    })
+        message: "User registered successfully",
+        user: {
+            _id: user._id,
+            email: user.email,
+            fullName: user.fullName
+        }
+    });
 }
 
 async function loginController(req, res) {
@@ -47,7 +51,7 @@ async function loginController(req, res) {
         return res.status(400).json({ message: "Invalid email or password" })
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 
     res.cookie("token", token);
 
