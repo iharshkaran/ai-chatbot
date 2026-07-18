@@ -2,7 +2,8 @@ import { Server } from "socket.io";
 import * as cookie from "cookie";
 import jwt from "jsonwebtoken";
 import User from "../models/user.model.js";
-import generateText from "../services/ai.service.js"
+import generateText from "../services/ai.service.js";
+import Message from "../models/message.model.js";
 
 
 function socketServer(httpServer) {
@@ -31,18 +32,38 @@ function socketServer(httpServer) {
     })
 
     io.on("connection", (socket) => {
+
         socket.on("ai-message", async (messagePayload) => {
 
-            // messagePayload = {
-            //     chat : chatId,
-            //     content: message text content
-            // }
+            
+            await Message.create({
+                chat: messagePayload.chat,
+                user: socket.user._id,
+                content: messagePayload.content,
+                role: "user"
+            })
 
-            const response = await generateText(messagePayload.content);
+            const messageHistory = await Message.find({
+                chat: messagePayload.chat
+            })
 
-            socket.emit("ai-response",{
+            const response = await generateText( messageHistory.map((message) => {
+                return {
+                    role: message.role,
+                    parts: [{ text: message.content }]
+                }
+            }));
+
+            await Message.create({
+                chat: messagePayload.chat,
+                user: socket.user._id,
+                content: messagePayload.content,
+                role: "model"
+            })
+
+            socket.emit("ai-response", {
                 content: response,
-                chat: messagePayload.chat 
+                chat: messagePayload.chat
             })
         })
     });
