@@ -65,7 +65,7 @@ src/
 
 ---
 
-# 🧠 AI Workflow
+## 🧠 AI Workflow
 
 ```
 User Message
@@ -94,7 +94,7 @@ Store Chat + Embedding
 
 ---
 
-# 💾 Memory System
+## 💾 Memory System
 
 The application stores conversation embeddings inside **Pinecone**.
 
@@ -110,7 +110,7 @@ This enables **long-term memory** instead of relying only on recent chat history
 
 ---
 
-# 🔑 Environment Variables
+## 🔑 Environment Variables
 
 Create a `.env` file.
 
@@ -128,7 +128,7 @@ PINECONE_API_KEY=
 
 ---
 
-# 📦 Installation
+## 📦 Installation
 
 Clone the repository
 
@@ -150,11 +150,11 @@ npm run dev
 
 ---
 
-# 📡 Socket Events
+## 📡 Socket Events
 
-## Client → Server
+### Client → Server
 
-### `ai-message`
+#### `ai-message`
 
 ```json
 {
@@ -165,9 +165,9 @@ npm run dev
 
 ---
 
-## Server → Client
+### Server → Client
 
-### `ai-response`
+#### `ai-response`
 
 ```json
 {
@@ -178,7 +178,7 @@ npm run dev
 
 ---
 
-# API Features
+## API Features
 
 - User Authentication
 - User Registration
@@ -191,7 +191,7 @@ npm run dev
 
 ---
 
-# Current Capabilities
+## Current Capabilities
 
 - ✅ Authentication
 - ✅ Real-Time Communication
@@ -205,10 +205,10 @@ npm run dev
 
 ---
 
-# Author
+## Author
 
 **Harsh**
 
 ---
 
-## ⭐ If you found this project interesting, consider giving it a star!
+#### ⭐ If you found this project interesting, consider giving it a star!
