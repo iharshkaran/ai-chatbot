@@ -35,7 +35,7 @@ function socketServer(httpServer) {
 
         socket.on("ai-message", async (messagePayload) => {
 
-            
+
             await Message.create({
                 chat: messagePayload.chat,
                 user: socket.user._id,
@@ -46,8 +46,13 @@ function socketServer(httpServer) {
             const messageHistory = await Message.find({
                 chat: messagePayload.chat
             })
+                .sort({ createdAt: -1 })   // newest first
+                .limit(20)                 // only 20
+                .lean();                 // plain objects
 
-            const response = await generateText( messageHistory.map((message) => {
+            messageHistory.reverse();
+
+            const response = await generateText(messageHistory.map((message) => {
                 return {
                     role: message.role,
                     parts: [{ text: message.content }]
@@ -57,7 +62,7 @@ function socketServer(httpServer) {
             await Message.create({
                 chat: messagePayload.chat,
                 user: socket.user._id,
-                content: messagePayload.content,
+                content: response,
                 role: "model"
             })
 
